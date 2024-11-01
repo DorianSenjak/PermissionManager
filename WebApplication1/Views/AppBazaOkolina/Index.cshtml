@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebApplication1.ViewModels.AppBazaOkolinaVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AppName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatabaseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OkolinaName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatabaseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OkolinaName)
+            </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { appId = item.IDApp, databaseId = item.IDBaza, OKLID = item.IDOKL }) |
+                    @Html.ActionLink("Delete", "Delete", new { appId = item.IDApp, databaseId = item.IDBaza, OKLID = item.IDOKL })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Info Page";
+}
+
+<h2>Izaberite okolinu</h2>
+
+<form asp-action="Info" method="post">
+    <label for="okolina">Okolina:</label>
+    <select id="okolina" name="okolina" class="form-control">
+        <option value="">-- Select Okolina --</option>
+        @foreach (var item in ViewBag.OkolinaDdlItems)
+        {
+            <option value="@item.Value" selected="@(ViewBag.SelectedOkolina == int.Parse(item.Value) ? "selected" : null)">@item.Text</option>
+        }
+    </select>
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+</form>
+
+@if (ViewBag.Apps != null && ViewBag.Apps.Count > 0)
+{
+    <h3>Applikacije za odaberenu okolinu:</h3>
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>Aplikacija</th>
+                <th>Baza</th>
+                <th>URL</th>
+                <th>User</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var app in ViewBag.Apps)
+            {
+                <tr>
+                    <td>@app.AppName</td>
+                    <td>@app.DatabaseName</td>
+                    <td>@app.EnvironmentLink</td>
+                    <td>@app.AppUser</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (ViewBag.SelectedOkolina != null)
+{
+    <p>Nema aplikacija za odaberenu okolinu.</p>
+}

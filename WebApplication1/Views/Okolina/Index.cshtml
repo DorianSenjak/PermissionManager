@@ -1,0 +1,40 @@
+﻿@model IEnumerable<WebApplication1.ViewModels.OkolinaVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Okolina</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OKLID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OKLName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OKLID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OKLName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.OKLID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.OKLID })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

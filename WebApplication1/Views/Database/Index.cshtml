@@ -1,0 +1,40 @@
+﻿@model IEnumerable<WebApplication1.ViewModels.DatabaseVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Baze</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BazaID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BazaName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BazaID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BazaName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.BazaID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.BazaID })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

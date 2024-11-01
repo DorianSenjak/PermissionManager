@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container min-vh-100 d-flex justify-content-center align-items-center">
+    <form method="post" class="mx-auto rounded border p-3">
+        <div class="form-group" style="padding: 10px">
+            <label for="username">Username:</label>
+            <input class="form-control ml-2" id="username" type="text" name="username" />
+        </div>
+        <div class="form-group" style="padding: 10px">
+            <label for="apps">App:</label>
+            <select class="form-select" name="apps" id="apps">
+                @foreach (var item in ViewBag.AppDdlItems)
+                {
+                    <option value="@item.Value">@item.Text</option>
+                }
+            </select>
+        </div>
+        <div class="form-group" style="padding: 10px">
+            <label for="okolina">Okolina:</label>
+            <select class="form-select ml-2" name="okolina" id="okolina">
+                @foreach (var item in ViewBag.OkolinaDdlItems)
+                {
+                    <option value="@item.Value">@item.Text</option>
+                }
+            </select>
+        </div>
+        <div class="form-group" style="padding: 10px">
+            <textarea class="form-control" id="textbox" name="textbox" rows="6" cols="50" readonly>@ViewBag.Message</textarea>
+        </div>
+        <button class="btn btn-primary" style="padding-left: 10px">Submit</button>
+    </form>
+</div>
